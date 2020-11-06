@@ -64,11 +64,15 @@ app.get('/secret', loggedIn, (req, res) => {
 });
 
 // Post login
-app.post('/login',
-    passport.authenticate('local', {failureRedirect: '/form'}),
+app.post('/login', passport.authenticate('local', {failureRedirect: '/form'}),
     (req, res) => {
       console.log('success');
       res.redirect('/secret');
     });
+
+app.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/form');
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
