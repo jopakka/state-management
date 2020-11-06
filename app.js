@@ -15,9 +15,6 @@ const loggedIn = (req, res, next) => {
   }
 };
 
-const username = 'foo';
-const password = 'bar';
-
 app.set('views', './views');
 app.set('view engine', 'pug');
 
