@@ -16,7 +16,14 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
+app.use(session({
+  secret: 'keyboard cat',
+  cookie: {
+    resave: false,
+    saveUninitialized: true,
+    maxAge: 60000
+  }
+}))
 
 app.get('/', (req, res) => {
   res.render('home');
