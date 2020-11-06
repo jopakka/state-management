@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(session({
   secret: 'keyboard cat',
-  resave: false,
+  resave: true,
   saveUninitialized: true,
   cookie: {
     maxAge: 60000,
