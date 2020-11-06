@@ -72,7 +72,7 @@ app.post('/login', passport.authenticate('local', {failureRedirect: '/form'}),
 
 app.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('/form');
+  res.redirect('/');
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
