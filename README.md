@@ -1,3 +1,4 @@
-# wop-starters
+# Usage
+>npm i\
+>node app
 
-Choose a branch and download as zip.
