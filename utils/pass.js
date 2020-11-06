@@ -43,25 +43,31 @@ const getUserLogin = (email) => {
 passport.serializeUser((id, done) => {
   console.log('serialize', id);
   // serialize user id by adding it to 'done()' callback
+  done(null, id);
 });
 
 // deserialize: get user id from session and get all user data
 passport.deserializeUser(async (id, done) => {
   // get user data by id from getUser
-  console.log('deserialize', user);
+  const user = getUser(id);
+  console.log('deserialize', id);
   // deserialize user by adding it to 'done()' callback
+  done(null, user);
 });
 
 passport.use(new Strategy(
     (username, password, done) => {
       // get user by username from getUserLogin
-      // if user is undefined
-      // return done(null, false);
+      const user = getUserLogin(username);
+
+      // if user is undefined or
       // if passwords dont match
-      // return done(null, false);
+      if (!user || user.password !== password) {
+        return done(null, false);
+      }
       // if all is ok
-      // return done(null, user.user_id);
-    }
+      return done(null, user.user_id);
+    },
 ));
 
 module.exports = passport;
